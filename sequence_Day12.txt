@@ -1,0 +1,91 @@
+You have a list/array of integers
+You need to:
+Find sum
+Find average
+Filter even numbers
+Square numbers
+
+Another Problem Statement for UDT collections
+Task:
+*Find all products with price > 500
+*Sort them by price
+*Print their names
+
+
+: What will be Business Logic? 
+
+
+Problems with Traditional Approach
+❌ Too much boilerplate code
+
+❌ Multiple loops required
+
+❌ Hard to read & maintain
+
+❌ No easy parallel processing
+
+❌ More chances of errors
+
+Enter Into Stream API
+
+Why Stream API is Needed
+1️⃣ Less Code (Concise)
+Instead of 20+ lines → just 1 chain of operations
+
+2️⃣ Readable (Declarative Style)
+👉 You write WHAT to do, not HOW
+
+filter → sort → map → print
+3️⃣ No Extra Storage Needed
+No need to create temporary lists like filtered
+
+4️⃣ Functional Programming Support
+Uses:
+Lambda expressions
+Method references
+
+5️⃣ Easy Parallel Processing
+Automatically uses multi-core CPU
+
+
+6️⃣ Pipeline Processing
+Data flows step-by-step:
+Collection → Stream → Filter → Sort → Map → Output
+
+
+👉 Without Stream:
+"First collect items, then filter manually, then arrange, then print"
+
+👉 With Stream:
+"Give instructions once and system does everything step-by-step automatically"
+
+
+OneLine about Stream.
+👉 "Stream API is used to process collections in a declarative, functional, and efficient way with support for parallel processing."
+
+| Without Stream      | With Stream           |
+| ------------------- | --------------------- |
+| More code           | Less code             |
+| Imperative          | Declarative           |
+| Manual loops        | Functional style      |
+| Hard to parallelize | Easy parallelStream() |
+| Less readable       | Highly readable       |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
