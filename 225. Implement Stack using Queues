@@ -1,0 +1,41 @@
+import java.util.*;
+
+class MyStack {
+    Queue<Integer> q1;
+    Queue<Integer> q2;
+
+    public MyStack() {
+        q1 = new LinkedList<>();
+        q2 = new LinkedList<>();
+    }
+
+    // Push operation (costly)
+    public void push(int x) {
+        q2.add(x); // Step 1
+
+        // Step 2: move all elements
+        while (!q1.isEmpty()) {
+            q2.add(q1.remove());
+        }
+
+        // Step 3: swap queues
+        Queue<Integer> temp = q1;
+        q1 = q2;
+        q2 = temp;
+    }
+
+    // Pop operation
+    public int pop() {
+        return q1.remove();
+    }
+
+    // Top operation
+    public int top() {
+        return q1.peek();
+    }
+
+    // Check empty
+    public boolean empty() {
+        return q1.isEmpty();
+    }
+}
