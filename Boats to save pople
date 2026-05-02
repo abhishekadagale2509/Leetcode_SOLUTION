@@ -1,0 +1,21 @@
+import java.util.*;
+
+class Solution {
+    public int numRescueBoats(int[] people, int limit) {
+        Arrays.sort(people);
+        
+        int i = 0;                      // lightest
+        int j = people.length - 1;      // heaviest
+        int boats = 0;
+        
+        while (i <= j) {
+            if (people[i] + people[j] <= limit) {
+                i++;   // pair lightest with heaviest
+            }
+            j--;       // heaviest always goes
+            boats++;
+        }
+        
+        return boats;
+    }
+}
