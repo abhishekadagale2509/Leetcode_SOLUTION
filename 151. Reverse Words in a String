@@ -14,3 +14,339 @@ class Solution {
         return ans;
     }
 }
+
+
+
+
+/*
+
+
+
+
+class Solution {
+    public String reverseWords(String s) {
+        String [] arr =s.split("\\s+");
+
+        StringBuilder sb=new StringBuilder("");
+        for(int i=arr.length-1;i>=0;i--)
+        {
+            sb.append(arr[i]+ " ");
+
+
+        }
+        String ans=sb.toString();
+        ans=ans.strim();
+        return ans;
+    }
+} explain step by step each every things
+
+Your code is solving the famous “Reverse Words in a String” problem in Java.
+
+Goal:
+
+Input:
+
+"the sky is blue"
+Output:
+
+"blue is sky the"
+Now let’s understand every line step by step.
+
+Complete Code
+class Solution {
+    public String reverseWords(String s) {
+        String[] arr = s.split("\\s+");
+
+        StringBuilder sb = new StringBuilder("");
+
+        for(int i = arr.length - 1; i >= 0; i--)
+        {
+            sb.append(arr[i] + " ");
+        }
+
+        String ans = sb.toString();
+
+        ans = ans.trim();
+
+        return ans;
+    }
+}
+Step 1 → Class Declaration
+class Solution
+A class is a blueprint in Java.
+
+Solution is the class name.
+
+Online coding platforms usually require this name.
+
+Step 2 → Method Declaration
+public String reverseWords(String s)
+Breakdown:
+
+Part	Meaning
+public	Method can be accessed from anywhere
+String	Method returns a String
+reverseWords	Method name
+(String s)	Input parameter
+Example:
+
+reverseWords("I love Java")
+Here:
+
+s = "I love Java"
+Step 3 → Splitting the String
+String[] arr = s.split("\\s+");
+This is the MOST IMPORTANT line.
+
+What is split()?
+split() breaks a string into parts.
+
+Example:
+
+String s = "I love Java";
+s.split(" ");
+Output:
+
+["I", "love", "Java"]
+What is \\s+ ?
+This is a Regular Expression (Regex).
+
+Meaning:
+
+Symbol	Meaning
+\s	whitespace (space, tab, newline)
++	one or more
+So:
+
+"\\s+"
+means:
+
+👉 split wherever there are one or more spaces.
+
+Why double slash \\ ?
+Because Java treats \ as an escape character.
+
+So:
+
+"\\s+"
+actually becomes:
+
+\s+
+for regex engine.
+
+Example
+Input:
+
+s = "  hello   world  java  "
+After:
+
+String[] arr = s.split("\\s+");
+Array becomes:
+
+["", "hello", "world", "java"]
+If leading spaces exist, first empty string may appear.
+
+Normally coding platforms handle trimming expectations.
+
+Step 4 → Creating StringBuilder
+StringBuilder sb = new StringBuilder("");
+What is StringBuilder?
+Used to modify strings efficiently.
+
+Strings are immutable in Java.
+
+Meaning:
+
+String s = "abc";
+s = s + "d";
+creates new objects repeatedly.
+
+This is slower.
+
+Why StringBuilder?
+Efficient for:
+
+appending
+
+modifying
+
+reversing
+
+concatenation in loops
+
+Memory View
+Initially:
+
+sb = ""
+(empty)
+
+Step 5 → Reverse Loop
+for(int i = arr.length - 1; i >= 0; i--)
+Understanding This Carefully
+Suppose:
+
+arr = ["I", "love", "Java"]
+Indexes:
+
+Index	Value
+0	I
+1	love
+2	Java
+arr.length
+arr.length = 3
+arr.length - 1
+3 - 1 = 2
+Last index = 2
+
+Loop Flow
+i = 2 → "Java"
+i = 1 → "love"
+i = 0 → "I"
+So we traverse backward.
+
+Step 6 → Append Words
+sb.append(arr[i] + " ");
+This adds:
+
+current word
+
+one space
+
+Iteration Example
+Suppose:
+
+arr = ["I", "love", "Java"]
+First iteration
+i = 2
+sb.append("Java ")
+Now:
+
+sb = "Java "
+Second iteration
+i = 1
+sb = "Java love "
+Third iteration
+i = 0
+sb = "Java love I "
+Notice extra space at end.
+
+Step 7 → Convert StringBuilder to String
+String ans = sb.toString();
+StringBuilder object converted into normal String.
+
+Now:
+
+ans = "Java love I "
+Step 8 → Remove Extra Spaces
+Your code has a typo:
+
+ans=ans.strim();
+Correct:
+
+ans = ans.trim();
+What does trim() do?
+Removes:
+
+leading spaces
+
+trailing spaces
+
+Example:
+
+"  hello  ".trim()
+Output:
+
+"hello"
+After trim()
+Before:
+
+"Java love I "
+After:
+
+"Java love I"
+Step 9 → Return Final Answer
+return ans;
+Method returns reversed sentence.
+
+Full Dry Run
+Input:
+
+s = "the sky is blue"
+After split
+arr = ["the", "sky", "is", "blue"]
+Loop
+i	arr[i]	sb
+3	blue	"blue "
+2	is	"blue is "
+1	sky	"blue is sky "
+0	the	"blue is sky the "
+After trim
+"blue is sky the"
+Returned.
+
+Time Complexity
+split()
+O(n)
+Loop
+O(n)
+Total
+O(n)
+Efficient solution.
+
+Space Complexity
+Extra array + StringBuilder:
+
+O(n)
+Final Correct Code
+class Solution {
+    public String reverseWords(String s) {
+
+        String[] arr = s.split("\\s+");
+
+        StringBuilder sb = new StringBuilder("");
+
+        for(int i = arr.length - 1; i >= 0; i--)
+        {
+            sb.append(arr[i] + " ");
+        }
+
+        String ans = sb.toString();
+
+        ans = ans.trim();
+
+        return ans;
+    }
+}
+Better Optimized Version
+You can avoid extra variable:
+
+class Solution {
+    public String reverseWords(String s) {
+
+        String[] arr = s.trim().split("\\s+");
+
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = arr.length - 1; i >= 0; i--)
+        {
+            sb.append(arr[i]);
+
+            if(i != 0)
+            {
+                sb.append(" ");
+            }
+        }
+
+        return sb.toString();
+    }
+}
+This avoids trailing extra space.
+
+
+Improve accuracy for technical work
+Upgrade to Plus and use the latest Thinking model to debug code, reason through systems, and solve math or science problems.
+
+Get Plus
+
+
+*/
