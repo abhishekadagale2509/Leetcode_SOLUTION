@@ -1,0 +1,52 @@
+
+import java.util.Stack;
+
+class Solution {
+    public String decodeString(String s) {
+
+        Stack<Integer> countStack = new Stack<>();
+        Stack<String> stringStack = new Stack<>();
+
+        String currentString = "";
+        int k = 0;
+
+        for (char ch : s.toCharArray()) {
+
+            // If digit, build the number
+            if (Character.isDigit(ch)) {
+                k = k * 10 + (ch - '0');
+            }
+
+            // Start of bracket
+            else if (ch == '[') {
+                countStack.push(k);
+                stringStack.push(currentString);
+
+                k = 0;
+                currentString = "";
+            }
+
+            // End of bracket
+            else if (ch == ']') {
+
+                int repeat = countStack.pop();
+                String prevString = stringStack.pop();
+
+                StringBuilder temp = new StringBuilder(prevString);
+
+                for (int i = 0; i < repeat; i++) {
+                    temp.append(currentString);
+                }
+
+                currentString = temp.toString();
+            }
+
+            // Normal character
+            else {
+                currentString += ch;
+            }
+        }
+
+        return currentString;
+    }
+}
