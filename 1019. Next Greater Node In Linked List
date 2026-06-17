@@ -1,0 +1,87 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+class Solution {
+public:
+
+    int sizeLL(ListNode* head) {
+
+        ListNode* curr = head;
+        int count = 0;
+
+        while(curr != nullptr) {
+            count++;
+            curr = curr->next;
+        }
+
+        return count;
+    }
+
+    // Reverse Linked List
+    ListNode* reverseLL(ListNode* head) {
+
+        ListNode* curr = head;
+        ListNode* prev = nullptr;
+
+        while(curr != nullptr) {
+
+            ListNode* temp = curr->next;
+
+            curr->next = prev;
+            prev = curr;
+            curr = temp;
+        }
+
+        return prev;
+    }
+
+    vector<int> nextLargerNodes(ListNode* head) {
+
+        int size = sizeLL(head);
+
+        vector<int> arr(size);
+
+        ListNode* nhead = reverseLL(head);
+
+        stack<int> st;
+
+        arr[size - 1] = 0;
+
+        st.push(nhead->val);
+
+        ListNode* curr = nhead->next;
+
+        int ptr = size - 2;
+
+        while(curr != nullptr) {
+
+            int ele = curr->val;
+
+            while(!st.empty() && st.top() <= ele) {
+                st.pop();
+            }
+
+            if(st.empty()) {
+                arr[ptr] = 0;
+            }
+            else {
+                arr[ptr] = st.top();
+            }
+
+            st.push(ele);
+
+            curr = curr->next;
+            ptr--;
+        }
+
+        return arr;
+    }
+};
